@@ -1,0 +1,16 @@
+FROM aiplanning/planutils:latest
+
+# Install solvers and tools
+RUN pip install flask \
+    && planutils install -y val \
+    && planutils install -y planning.domains \
+    && planutils install -y popf \
+    && planutils install -y optic \
+    && planutils install -y smtplan \
+    && planutils install -y lama-first \
+    && planutils activate
+
+EXPOSE 5555
+
+# ENV FLASK_DEBUG 1
+CMD planutils server --host 0.0.0.0 --port 5555
