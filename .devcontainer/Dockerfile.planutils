@@ -2,12 +2,13 @@ FROM aiplanning/planutils:latest
 
 # Install solvers and tools
 RUN pip install flask \
-    && planutils install -y val \
+    && planutils install -y dual-bfws-ffparser \
+    && planutils install -y lama-first \
+    && planutils install -y optic \
     && planutils install -y planning.domains \
     && planutils install -y popf \
-    && planutils install -y optic \
     && planutils install -y smtplan \
-    && planutils install -y lama-first \
+    && planutils install -y val \
     && planutils activate
 
 EXPOSE 5555
